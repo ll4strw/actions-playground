@@ -1,4 +1,4 @@
-name: Test GNU Autoconf
+name: GNU Autotools and Dependencies
 on: [push, pull_request]
 
 permissions:
@@ -9,7 +9,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  GNU platform:
+  GNU-platform:
     runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@v2
