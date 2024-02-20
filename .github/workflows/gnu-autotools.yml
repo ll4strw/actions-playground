@@ -1,0 +1,34 @@
+name: Test GNU Autoconf
+on: [push, pull_request]
+
+permissions:
+  contents: read # to fetch code (actions/checkout)
+
+concurrency:
+  group: ${{format('{0}:{1}:{2}', github.repository, github.ref, github.workflow)}}
+  cancel-in-progress: true
+
+jobs:
+  GNU platform:
+    runs-on: ubuntu-22.04
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: set up GNU auto tools
+      run: |
+        apt install -y autotools-dev
+        apt install -y autoconf
+        apt install -y libtool
+
+    - name: set up dependencies
+      run: |
+        apt install -y libcurl4-openssl-dev
+        apt install -y libssl-dev
+        apt install -y libpam-dev
+        apt install -y libqrencode-dev
+        apt install -y make
+
+    - name: test autotools
+      run: |
+        autoconf -V
+	automake --version
