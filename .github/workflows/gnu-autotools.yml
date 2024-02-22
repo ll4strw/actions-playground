@@ -16,17 +16,17 @@ jobs:
 
     - name: set up GNU auto tools
       run: |
-        sudo apt install -y autotools-dev
-        sudo apt install -y autoconf
-        sudo apt install -y libtool
+        apt-get install -qq  autotools-dev 
+        apt-get install -qq  autoconf
+        apt-get install -qq  libtool
 
     - name: set up dependencies
       run: |
-        sudo apt install -y libcurl4-openssl-dev
-        sudo apt install -y libssl-dev
-        sudo apt install -y libpam-dev
-        sudo apt install -y libqrencode-dev
-        sudo apt install -y make
+        apt-get install  -qq libcurl4-openssl-dev
+        apt-get install  -qq libssl-dev
+        apt-get install  -qq libpam-dev
+        apt-get install  -qq libqrencode-dev
+        apt-get install  -qq make
 
     - name: test autotools
       run: |
